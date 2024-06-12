@@ -1,0 +1,20 @@
+﻿@model FuncionarioModel;
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<div class="text-center">
+	<h4>Realmente deseja apagar o contato (Model.Nome)?</h4>
+</div>
+
+<form asp-controller="Funcionarios" asp-action="Apagar" method="post">
+    <div class="form-group">
+        <label for="Matricula" class="form-label">Matricula</label>
+        <input type="id" asp-for="Matricula" class="form-control" placeholder="Digite a matricula">
+
+    </div>
+    <button type="submit" class="btn btn-primary w-100 mt-2 mb-2">Apagar</button>
+    <a class="btn btn-secondary w-100" asp-action="Index" asp-controler="Funcionarios" role="button">Voltar</a>
+
+</form>

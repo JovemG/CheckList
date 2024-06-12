@@ -1,0 +1,54 @@
+﻿@model List<FuncionarioModel>
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Lista de Funcionários</h1>
+
+    <br />
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-success" role="button" asp-controller="Funcionarios" asp-action="CriarFuncionario">Adicionar Funcionário</a>
+    </div>
+
+    <br />
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Matricula</th>
+                <th scope="col">Nome</th>
+                <th scope="col"></th>
+        </thead>
+        <tbody>
+             @if (Model != null && Model.Any())
+            {
+                foreach(FuncionarioModel funcionario in Model)
+                {
+                
+                   <tr>
+                       <th scope="row">@funcionario.Matricula</th>
+                       <td>@funcionario.Nome</td>
+                       <th>
+                           <div class="btn-group" role="group">
+
+                               <a role="button" class="btn btn-primary" asp-route-id="@funcionario.Matricula"  asp-controller="Funcionarios" asp-action="EditarFuncionario">Editar</a>
+
+                               <a role="button" class="btn btn-danger" asp-route-id="@funcionario.Matricula" asp-controller="Funcionarios" asp-action="ApagarFuncionario">Remover</a>
+
+                               <a role="button" class="btn btn-success" asp-controller="Funcionarios" asp-action="CheckEPI">CheckList</a>
+
+                          </div>
+                       </th>
+                   </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
